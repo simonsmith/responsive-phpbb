@@ -28,4 +28,90 @@
                         <h2>{SITE_DESCRIPTION}</h2>
                     </hgroup>
                 </a>
+                <nav class="user-panel">
+                    <!-- IF not S_USER_LOGGED_IN and not S_IS_BOT -->
+                        <a href="{U_LOGIN_LOGOUT}" class="login user-panel-link">{L_LOGIN_LOGOUT}</a>
+                        <div class="dropdown">
+                            <form method="post" action="{S_LOGIN_ACTION}" class="quick-login">
+                                <fieldset>
+                                    <div>
+                                        <label for="username">{L_USERNAME}</label>
+                                        <input type="text" name="username" id="username" placeholder="{L_USERNAME}">
+                                    </div>
+                                    <div>
+                                        <label for="password">{L_PASSWORD}</label>
+                                        <input type="password" name="password" id="password" placeholder="{L_PASSWORD}">
+                                    </div>
+                                    <!-- IF S_AUTOLOGIN_ENABLED -->
+                                        <div>
+                                            <label for="autologin">{L_LOG_ME_IN} <input type="checkbox" name="autologin" id="autologin"></label>
+                                        </div>
+                                    <!-- ENDIF -->
+                                    <button type="submit" name="login">{L_LOGIN}</button>
+                                    {S_LOGIN_REDIRECT}
+                                </fieldset>
+                                <!-- IF S_REGISTER_ENABLED -->
+                                    <a href="{U_REGISTER}">{L_REGISTER}</a>
+                                <!-- ENDIF -->
+                            </form>
+                        </div>
+                    <!-- ENDIF -->
+                    <!-- IF S_USER_LOGGED_IN -->
+                        <a href="{U_PROFILE}" class="user-panel-link user">{CURRENT_USERNAME}</a>
+                        <div class="dropdown">
+                            <ul>
+                                <li class="user-profile"><a href="{U_PROFILE}">{L_PROFILE}</a></li>
+                                <!-- IF S_DISPLAY_PM -->
+                                    <li class="user-pm"><a href="{U_PRIVATEMSGS}">{PRIVATE_MESSAGE_INFO}</a></li>
+                                <!-- ENDIF -->
+                                <!-- IF S_DISPLAY_SEARCH -->
+                                    <li class="user-posts"><a href="{U_SEARCH_SELF}">{L_SEARCH_SELF}</a></li>
+                                <!-- ENDIF -->
+                                <!-- IF U_RESTORE_PERMISSIONS -->
+                                    <li class="restore-permissions"><a href="{U_RESTORE_PERMISSIONS}">{L_RESTORE_PERMISSIONS}</a></li>
+                                <!-- ENDIF -->
+                                <li class="faq"><a href="{U_FAQ}"><abbr title="{L_FAQ_EXPLAIN}">{L_FAQ}</abbr></a></li>
+                                <!-- IF U_ACP -->
+                                    <li class="user-acp"><a class="" href="{U_ACP}"><abbr title="{L_ACP}">ACP</abbr></a></li>
+                                <!-- ENDIF -->
+                                <!-- IF not S_IS_BOT -->
+                                    <!-- IF S_DISPLAY_MEMBERLIST -->
+                                        <li><a href="{U_MEMBERLIST}">{L_MEMBERLIST}</a></li>
+                                    <!-- ENDIF -->
+                                    <li><a href="{U_LOGIN_LOGOUT}">{L_LOGOUT}</a></li>
+                                <!-- ENDIF -->
+                            </ul>
+                        </div>
+                    <!-- ENDIF -->
+                </nav>
+                <!-- IF S_DISPLAY_SEARCH and not S_IN_SEARCH -->
+                    <div class="search">
+                        <form action="{U_SEARCH}" method="get" class="search-form" role="search">
+                        <fieldset>
+                            <input name="keywords" id="keywords" type="text" maxlength="128" title="{L_SEARCH_KEYWORDS}" placeholder="<!-- IF SEARCH_WORDS-->{SEARCH_WORDS}<!-- ELSE -->{L_SEARCH_MINI}<!-- ENDIF -->">
+                            <button type="submit">{L_SEARCH}</button>
+                            <a href="{U_SEARCH}" class="advanced-search" title="{L_SEARCH_ADV_EXPLAIN}">{L_SEARCH_ADV}</a>
+                            {S_SEARCH_HIDDEN_FIELDS}
+                        </fieldset>
+                        </form>
+                    </div>
+                <!-- ENDIF -->
             </header>
+
+            <nav class="additional">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{U_INDEX}">{L_INDEX}</a></li>
+                    <!-- BEGIN navlinks -->
+                        <li class="breadcrumb-item"><a href="{navlinks.U_VIEW_FORUM}">{navlinks.FORUM_NAME}</a></li>
+                    <!-- END navlinks -->
+                </ul>
+            </nav>
+
+            <div class="site-content" role="content">
+
+                <!-- IF S_BOARD_DISABLED and S_USER_LOGGED_IN and (U_MCP or U_ACP) -->
+                    <div class="info">
+                        <h1>{L_INFORMATION}</h1>
+                        <p>{L_BOARD_DISABLED}</p>
+                    </div>
+                <!-- ENDIF -->

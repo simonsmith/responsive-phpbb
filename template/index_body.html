@@ -1,5 +1,49 @@
 <!-- INCLUDE overall_header.html -->
 
-<p>test</p>
+<!-- INCLUDE forumlist_body.html -->
+
+    <aside role="complementary" class="forum-info">
+        <h1 class="visuallyhidden">Forum information</h1>
+        <!-- IF S_DISPLAY_ONLINE_LIST -->
+            <div class="online-user-info">
+                <!-- IF U_VIEWONLINE -->
+                    <h2><a href="{U_VIEWONLINE}">{L_WHO_IS_ONLINE}</a></h2>
+                <!-- ELSE -->
+                    <h2>{L_WHO_IS_ONLINE}</h2>
+                <!-- ENDIF -->
+                <div class="users">
+                    <p class="user-total">{TOTAL_USERS_ONLINE} ({L_ONLINE_EXPLAIN})</p>
+                    <p class="user-record">{RECORD_USERS}</p>
+                    <p class="user-list">{LOGGED_IN_USER_LIST}</p>
+                    <!-- IF LEGEND -->
+                        <p class="user-legend">{L_LEGEND}: {LEGEND}</p>
+                    <!-- ENDIF -->
+                </div>
+            </div>
+        <!-- ENDIF -->
+        <!-- IF S_DISPLAY_BIRTHDAY_LIST and BIRTHDAY_LIST -->
+            <div class="birthdays">
+                <h2>{L_BIRTHDAYS}</h2>
+                <p>
+                    <!-- IF BIRTHDAY_LIST -->
+                        {L_CONGRATULATIONS}: <span class="birthday-list">{BIRTHDAY_LIST}</span>
+                    <!-- ELSE -->
+                        <span class="no-birthdays">{L_NO_BIRTHDAYS}</span>
+                    <!-- ENDIF -->
+                </p>
+            </div>
+        <!-- ENDIF -->
+        <!-- IF NEWEST_USER -->
+        <div class="statistics">
+        	<h2>{L_STATISTICS}</h2>
+            <ul class="statistic-list">
+                <li class="total-posts">{TOTAL_POSTS}</li>
+                <li class="total-topics">{TOTAL_TOPICS}</li>
+                <li class="total-users">{TOTAL_USERS}</li>
+                <li class="newest-user">{NEWEST_USER}</li>
+            </ul>
+        </div>
+        <!-- ENDIF -->
+    </aside>
 
 <!-- INCLUDE overall_footer.html -->
