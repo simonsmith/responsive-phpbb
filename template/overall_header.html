@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="{S_CONTENT_ENCODING}">
+        <title>{SITENAME} &bull; <!-- IF S_IN_MCP -->{L_MCP} &bull; <!-- ELSEIF S_IN_UCP -->{L_UCP} &bull; <!-- ENDIF -->{PAGE_TITLE}</title>
+        <meta name="viewport" content="width=device-width">
+        <meta name="description" content="{SITE_DESCRIPTION}">
+        <link rel="stylesheet" href="{T_STYLESHEET_LINK}">
+        <script src="{T_SUPER_TEMPLATE_PATH}/scripts/lib/modernizr.js"></script>
+        <script src="{T_SUPER_TEMPLATE_PATH}/scripts/lib/require.js"></script>
+        <script>
+            require.config({
+                baseUrl: '{T_SUPER_TEMPLATE_PATH}/scripts/',
+                paths: {
+                    jquery: 'lib/jquery'
+                }
+            });
+        </script>
+    </head>
+    <body class="{SCRIPT_NAME}">
+
+        <div class="container">
+
+            <header class="site-header" role="banner">
+                <a href="{U_INDEX}" title="{L_INDEX}">
+                    <hgroup>
+                        <h1>{SITENAME}</h1>
+                        <h2>{SITE_DESCRIPTION}</h2>
+                    </hgroup>
+                </a>
+            </header>
