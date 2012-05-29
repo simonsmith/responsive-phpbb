@@ -1,2 +1,41 @@
 
-    <p>forum list</p>
+<!-- BEGIN forumrow -->
+
+    <!-- IF (forumrow.S_IS_CAT and not forumrow.S_FIRST_ROW) or forumrow.S_NO_CAT  -->
+            </div>
+        </section>
+    <!-- ENDIF -->
+
+    <!-- IF forumrow.S_IS_CAT or forumrow.S_FIRST_ROW  or forumrow.S_NO_CAT  -->
+        <section class="forum-group">
+            <h1 class="forum-group-header"><!-- IF forumrow.S_IS_CAT --><a href="{forumrow.U_VIEWFORUM}">{forumrow.FORUM_NAME}</a><!-- ELSE -->{L_FORUM}<!-- ENDIF --></h1>
+            <div class="forum-list">
+    <!-- ENDIF -->
+
+    <!-- IF not forumrow.S_IS_CAT -->
+        <article class="forum">
+            <header class="forum-header">
+                <h1 class="forum-name"><a href="{forumrow.U_VIEWFORUM}">{forumrow.FORUM_NAME}</a></h1>
+                <p class="forum-description">{forumrow.FORUM_DESC}</p>
+            </header>
+            <footer class="forum-meta">
+                <dl class="forum-meta-list">
+                    <dt>{L_TOPICS}</dt>
+                    <dd>{forumrow.TOPICS}</dd>
+                    <dt>{L_POSTS}</dt>
+                    <dd>{forumrow.POSTS}</dd>
+                    <!-- IF forumrow.LAST_POST_TIME -->
+                        <dt>{L_LAST_POST}</dt>
+                        <dd>{L_POST_BY_AUTHOR} {forumrow.LAST_POSTER_FULL}</dd>
+                    <!-- ENDIF -->
+                </dl>
+            </footer>
+        </article>
+    <!-- ENDIF -->
+
+    <!-- IF forumrow.S_LAST_ROW -->
+            </div>
+        </section>
+    <!-- ENDIF -->
+
+<!-- END forumrow -->
